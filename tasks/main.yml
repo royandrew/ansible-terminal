@@ -34,7 +34,7 @@
       path: "{{ home_dir }}/.bash_aliases"
       state: directory
       owner: "{{ ansible_user_id }}"
-      mode: u=rw,g=r,o=r
+      mode: 0755
   
   - name: Copy aliases file
     copy:
