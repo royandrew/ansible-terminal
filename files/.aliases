@@ -1,0 +1,1 @@
+alias rsync_dir="rsync -avP --exclude '.DS_Store' --omit-dir-times"

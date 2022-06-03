@@ -1,0 +1,26 @@
+---
+- name: Create bash completion directory
+  file:
+    path: "/etc/bash_completion.d"
+    state: directory
+    recurse: yes
+  become: yes
+    
+- name: Check if docker bash completion exists
+  stat:
+    path: "{{ docker.bash_completion.dest }}"
+  register: docker_bash_completion_check
+  changed_when: false
+  failed_when: false
+
+- name: Set docker bach completion status
+  set_fact:
+    docker_bash_completion_is_installed: "{{ docker_bash_completion_check.stat.exists }}"
+
+- name: Download docker bash completion
+  get_url:
+    url: "{{ docker.bash_completion.url }}"
+    dest: "{{ docker.bash_completion.dest }}"
+    mode: '0644'
+  become: yes
+  when: not (docker_bash_completion_is_installed | bool)

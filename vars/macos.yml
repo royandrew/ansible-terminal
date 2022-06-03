@@ -1,0 +1,9 @@
+powerline:
+  bindings:
+    path: /Library/Python/3.8/site-packages/powerline/bindings/bash/powerline.sh
+  config:
+    path: .config/powerline/config.json
+packages:
+  pip:
+   - powerline-status
+   - psutil

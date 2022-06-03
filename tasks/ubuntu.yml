@@ -1,0 +1,6 @@
+- name: Install powerline
+  apt: 
+    name: powerline
+    state: latest
+    update_cache: yes
+  become: yes
