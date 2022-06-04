@@ -66,6 +66,7 @@
       dest: "{{ home_dir }}/.bashrc"
       owner: "{{ ansible_user_id }}"
       mode: u=rw,g=r,o=r
+    when: ansible_os_family != "Darwin"
 
   - name: Create powerline config directory
     file:
