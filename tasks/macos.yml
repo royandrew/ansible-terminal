@@ -3,5 +3,4 @@
     executable: pip3
     name: "{{ item }}"
     state: latest
-  become: yes
   with_items: "{{ packages.pip }}"

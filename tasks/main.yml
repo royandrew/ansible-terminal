@@ -51,6 +51,15 @@
       mode: u=rw,g=r,o=r
     with_items: "{{ files_to_copy }}"
 
+  - name: Find python package location
+    shell: echo $(pip3 show powerline-status |grep Location|cut -d ' ' -f 2)
+    register: python_package
+    run_once: true
+
+  - name: Set powerline bindings location
+    set_fact:
+      powerline_bindings_path={{ python_package.stdout }}/powerline/bindings/bash/powerline.sh
+
   - name: Create bash settings
     template: 
       src: bashrc.j2
@@ -62,6 +71,7 @@
     file:
       path: "{{ home_dir }}/{{ powerline.config.path | dirname }}"
       state: directory
+      owner: "{{ ansible_user_id }}"
       recurse: yes
   
   - name: Copy powerline config

@@ -45,9 +45,9 @@ docker_logs () {
 }
 
 # Powerline
-if [ -f {{ powerline.bindings.path }} ]; then
+if [ -f {{ powerline_bindings_path }} ]; then
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1
   POWERLINE_BASH_SELECT=1
-  source {{ powerline.bindings.path }}
+  source {{ powerline_bindings_path }}
 fi
