@@ -5,7 +5,6 @@ export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
 
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven
-export PATH="$MAVEN_HOME/bin:/opt/homebrew/bin:$PATH"
 
 for f in ~/.bash_aliases/*; do source $f; done
 
@@ -30,9 +29,9 @@ sha256_verify () {
         checksum=`openssl sha -sha256 "$1" | cut -d "=" -f 2 | xargs echo`
         if [ "$checksum" == "$2" ]
         then
-            echo "Checksum matches"
+                echo "Checksum matches"
         else
-             echo "Actual checksum: $checksum do not match expected checksum $2"
+                echo "Actual checksum: $checksum do not match expected checksum $2"
         fi
 }
 

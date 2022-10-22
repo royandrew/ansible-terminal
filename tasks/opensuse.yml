@@ -3,3 +3,4 @@
     name: powerline
     state: latest
   become: yes
+  when: install_powerline == true

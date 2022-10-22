@@ -1,0 +1,11 @@
+---
+argument_specs:
+  # /tasks/main.yml entry point
+  main:
+    short_description: The main entry point for the terminal role.
+    options:
+      install_powerline:
+        type: "bool"
+        required: false
+        default: true
+        description: "The boolean value, defaulting to true."
