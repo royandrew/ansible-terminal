@@ -5,10 +5,3 @@
     state: latest
   with_items: "{{ packages.pip }}"
   when: install_powerline == true
-
-# - name: Create bash settings
-#   template: 
-#     src: bashrc_osx.j2
-#     dest: "{{ home_dir }}/.bashrc"
-#     owner: "{{ ansible_user_id }}"
-#     mode: u=rw,g=r,o=r
