@@ -1,0 +1,21 @@
+# - name: Install Starship.rs on linux
+#   snap:
+#     name: "starship"
+#     state: present
+#   become: yes
+#   when: ansible_distribution == "Ubuntu" or ansible_distribution == "openSUSE Leap"
+
+- name: Install Starship.rs using brew
+  community.general.homebrew:
+    name: "starship"
+    state: latest
+    update_homebrew: yes
+  ignore_errors: yes
+  # when: ansible_os_family == "Darwin"
+
+- name: Configure Starship.rs
+  copy:
+    src: "starship.toml"
+    dest: "{{ home_dir }}/.config/starship.toml"
+    owner: "{{ ansible_user_id }}"
+    mode: u=rw,g=r,o=r

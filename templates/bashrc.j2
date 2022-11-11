@@ -1,5 +1,6 @@
 source ~/.bash/git-prompt.sh
 PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 {% if ansible_os_family != "Darwin" %}
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
@@ -57,6 +58,10 @@ if [ -f {{ powerline_bindings_path }} ]; then
   POWERLINE_BASH_SELECT=1
   source {{ powerline_bindings_path }}
 fi
+{% endif %}
+
+{% if terminal_prompt == 'starship' %}
+eval "$(starship init bash)"
 {% endif %}
 
 # wget https://github.com/BlackReloaded/wsl2-ssh-pageant/releases/latest/download/wsl2-ssh-pageant.exe -O ~/.ssh/wsl2-ssh-pageant.exe
