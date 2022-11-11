@@ -1,5 +1,0 @@
-powerline:
-  bindings:
-    path: /usr/share/powerline/bash/powerline.sh
-  config:
-    path: .config/powerline/config.json

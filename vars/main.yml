@@ -6,3 +6,6 @@ docker:
     url: https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker
     dest: /etc/bash_completion.d/docker
 
+powerline:
+  config:
+    path: .config/powerline/config.json

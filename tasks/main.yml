@@ -1,23 +1,6 @@
 ---  
-  - name: Load ubuntu specific variables
-    include_vars: ubuntu.yml
-    when: ansible_distribution == "Ubuntu"
-  
-  - name: Load opensuse specific variables
-    include_vars: opensuse.yml
-    when: ansible_distribution == "openSUSE Leap"
-
   - name: Load Mac OSX specific variables
     include_vars: macos.yml
-    when: ansible_os_family == "Darwin"
-
-  - include_tasks: ubuntu.yml
-    when: ansible_distribution == "Ubuntu"
-  
-  - include_tasks: opensuse.yml
-    when: ansible_distribution == "openSUSE Leap"
-
-  - include_tasks: macos.yml
     when: ansible_os_family == "Darwin"
   
   - include_tasks: docker_bash_completion.yml
@@ -32,9 +15,9 @@
       owner: "{{ ansible_user_id }}"
       mode: u=rw,g=r,o=r
 
-  - name: Create aliases directory
+  - name: Create includes directory
     file:
-      path: "{{ home_dir }}/.bash_aliases"
+      path: "{{ home_dir }}/.bash_includes"
       state: directory
       owner: "{{ ansible_user_id }}"
       mode: 0755
@@ -42,7 +25,7 @@
   - name: Copy aliases file
     copy:
       src: ".aliases"
-      dest: "{{ home_dir }}/.bash_aliases/aliases"
+      dest: "{{ home_dir }}/.bash_includes/aliases"
       owner: "{{ ansible_user_id }}"
       mode: u=rw,g=r,o=r
 

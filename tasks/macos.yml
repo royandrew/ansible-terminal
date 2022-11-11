@@ -1,7 +1,0 @@
-- name: Install powerline
-  pip: 
-    executable: pip3
-    name: "{{ item }}"
-    state: latest
-  with_items: "{{ packages.pip }}"
-  when: install_powerline == true
