@@ -49,7 +49,7 @@ docker_logs () {
         docker container logs -f $1;
 }
 
-{% if install_powerline == true %}
+{% if terminal_prompt == 'powerline' %}
 # Powerline
 if [ -f {{ powerline_bindings_path }} ]; then
   powerline-daemon -q

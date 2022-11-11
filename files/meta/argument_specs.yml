@@ -9,3 +9,8 @@ argument_specs:
         required: false
         default: true
         description: "The boolean value, defaulting to true."
+      terminal_prompt:
+        type: "str"
+        required: false
+        default: 'powerline'
+        description: "Options are 'powerline' or 'starship'. Default powerline"

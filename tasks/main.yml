@@ -6,7 +6,10 @@
   - include_tasks: docker_bash_completion.yml
 
   - include_tasks: powerline.yml
-    when: install_powerline == true
+    when: terminal_prompt == 'powerline'
+
+  - include_tasks: starship.yml
+    when: terminal_prompt == 'starship'
   
   - name: Install git-prompt.sh
     copy:
