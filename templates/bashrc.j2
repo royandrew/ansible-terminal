@@ -1,6 +1,9 @@
 source ~/.bash/git-prompt.sh
 PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
+
+{% if ansible_os_family == "Ubuntu" or ansible_os_family == "openSUSE Leap" %}
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{% endif %}
 
 {% if ansible_os_family != "Darwin" %}
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))

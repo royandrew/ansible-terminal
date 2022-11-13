@@ -46,3 +46,10 @@
       dest: "{{ home_dir }}/.bashrc"
       owner: "{{ ansible_user_id }}"
       mode: u=rw,g=r,o=r
+  
+  - name: Create gpg agent settings
+    template: 
+      src: gpg-agent.conf.j2
+      dest: "{{ home_dir }}/.gnupg/gpg-agent.conf"
+      owner: "{{ ansible_user_id }}"
+      mode: u=rw,g=r,o=r
