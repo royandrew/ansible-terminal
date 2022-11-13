@@ -1,17 +1,17 @@
 source ~/.bash/git-prompt.sh
 PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
 
-{% if ansible_os_family == "Ubuntu" or ansible_os_family == "openSUSE Leap" %}
+{% if ansible_distribution == "Ubuntu" or ansible_distribution == "openSUSE Leap" %}
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {% endif %}
 
-{% if ansible_os_family != "Darwin" %}
+{% if ansible_distribution != "Darwin" %}
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven    
 {% endif %}
 
-{% if ansible_os_family == "Darwin" %}
+{% if ansible_distribution == "Darwin" %}
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="/opt/homebrew/bin:$PATH"
 {% endif %}
