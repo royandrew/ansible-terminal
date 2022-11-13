@@ -36,21 +36,21 @@ loc () {
 }
 
 sha256_verify () {
-        checksum=`openssl sha -sha256 "$1" | cut -d "=" -f 2 | xargs echo`
-        if [ "$checksum" == "$2" ]
-        then
-                echo "Checksum matches"
-        else
-                echo "Actual checksum: $checksum do not match expected checksum $2"
-        fi
+  checksum=`openssl sha -sha256 "$1" | cut -d "=" -f 2 | xargs echo`
+  if [ "$checksum" == "$2" ]
+  then
+          echo "Checksum matches"
+  else
+          echo "Actual checksum: $checksum do not match expected checksum $2"
+  fi
 }
 
 sha256_check () {
-        echo "$2 $1" | sha256sum -c;
+  echo "$2 $1" | sha256sum -c;
 }
 
 docker_logs () {
-        docker container logs -f $1;
+  docker container logs -f $1;
 }
 
 {% if terminal_prompt == 'powerline' %}
@@ -67,6 +67,7 @@ fi
 eval "$(starship init bash)"
 {% endif %}
 
+{% if 'WSL2' in ansible_kernel %}
 # wget https://github.com/BlackReloaded/wsl2-ssh-pageant/releases/latest/download/wsl2-ssh-pageant.exe -O ~/.ssh/wsl2-ssh-pageant.exe
 # chmod +x ~/.ssh/wsl2-ssh-pageant.exe
 export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
@@ -93,3 +94,4 @@ if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
   fi
   unset wsl2_ssh_pageant_bin
 fi
+{% endif %}
