@@ -5,11 +5,11 @@ ttyname $GPG_TTY
 default-cache-ttl 60
 max-cache-ttl 120
 
-{% if ansible_os_family == "Ubuntu" or ansible_os_family == "openSUSE Leap" %}
+{% if ansible_distribution == "Ubuntu" or ansible_distribution == "openSUSE Leap" %}
 pinentry-program /usr/bin/pinentry-curses
 {% endif %}
 
-{% if ansible_os_family == "Darwin" %}
+{% if ansible_distribution == "Darwin" %}
 pinentry-program /opt/homebrew/bin/pinentry-mac
 {% endif %}
 
