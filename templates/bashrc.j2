@@ -31,6 +31,9 @@ HISTFILESIZE=2000
 
 export CLICOLOR=1
 
+# fix gpg signing
+export GPG_TTY=$(tty)
+
 loc () {
 	wc -l $(find ./ -name "$1")
 }
