@@ -1,5 +1,5 @@
 format = """
-[](#48349a)\
+[┌](#48349a)\
 $username\
 [](bg:#DA627D fg:#48349a)\
 $directory\
@@ -23,7 +23,8 @@ $terraform\
 $docker_context\
 [](fg:#06969A bg:#33658A)\
 $time\
-[ ](fg:#33658A)\
+[ ](fg:#33658A)
+[└─ ](fg:#48349a)
 """
 
 # Disable the blank line at the start of the prompt
