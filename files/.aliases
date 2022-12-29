@@ -2,3 +2,5 @@ alias rsync_dir="rsync -avP --exclude '.DS_Store' --omit-dir-times"
 
 # Git aliases
 alias git-pull-all="git pull --recurse-submodules"
+alias git-sha="git rev-parse HEAD"
+alias git-sha-short="git rev-parse --short HEAD"
