@@ -5,8 +5,8 @@ PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {% endif %}
 
-{% if ansible_os_family != "Darwin" %}
-export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
+{% if ansible_distribution != "Darwin" %}
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven    
 {% endif %}
