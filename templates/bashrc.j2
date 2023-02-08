@@ -8,7 +8,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {% if ansible_distribution != "Darwin" %}
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export M2_HOME=/opt/maven
-export MAVEN_HOME=/opt/maven    
+export MAVEN_HOME=/opt/maven 
+export PATH="/opt/maven/bin:$PATH"   
 {% endif %}
 
 {% if ansible_os_family == "Darwin" %}
