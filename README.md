@@ -1,3 +1,3 @@
 # ansible-terminal
 
-Ansible role for installing powerline for Ubuntu, OpenSuSE and Mac OSX.
+Ansible role for installing powerline and starship for Ubuntu and Mac OSX.
