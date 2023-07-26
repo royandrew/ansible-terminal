@@ -100,4 +100,7 @@ if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
   fi
   unset wsl2_ssh_pageant_bin
 fi
+{% else %}
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
 {% endif %}
