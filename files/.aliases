@@ -6,3 +6,6 @@ alias git-sha="git rev-parse HEAD"
 alias git-sha-short="git rev-parse --short HEAD"
 alias git-ph="git push origin HEAD"
 alias git-pfh="git push --force origin HEAD"
+
+# SSH Agent
+alias restart-gpgagent="gpg-connect-agent updatestartuptty /bye"
