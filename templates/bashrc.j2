@@ -10,7 +10,8 @@ export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 {% endif %}
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export RUSTPATH=$HOME/.cargo/bin
+export PATH=$PATH:$GOPATH/bin:$RUSTPATH
 
 {% if ansible_os_family == "Darwin" %}
 export JAVA_HOME=$(/usr/libexec/java_home)
