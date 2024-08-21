@@ -9,3 +9,6 @@ alias git-pfh="git push --force origin HEAD"
 
 # SSH Agent
 alias restart-gpgagent="gpg-connect-agent updatestartuptty /bye"
+
+# Switch JDK
+alias switch-jdk="source ~/.bash/switch-jdk.sh"
