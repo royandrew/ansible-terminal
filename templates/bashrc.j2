@@ -59,7 +59,7 @@ docker_logs () {
   docker container logs -f $1;
 }
 
-export WEATHER=$(curl -m 2 -s wttr.in/london?format="%t%20%c")
+# export WEATHER=$(curl -m 2 -s wttr.in/london?format="%t%20%c")
 
 {% if terminal_prompt == 'powerline' %}
 # Powerline
