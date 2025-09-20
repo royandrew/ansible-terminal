@@ -24,13 +24,14 @@
       state: directory
       owner: "{{ ansible_user_id }}"
       mode: 0755
-  
-  - name: Copy aliases file
+
+  - name: Copy bash include files
     copy:
-      src: ".aliases"
-      dest: "{{ home_dir }}/.bash_includes/aliases"
+      src: "{{ item }}"
+      dest: "{{ home_dir }}/{{ item }}"
       owner: "{{ ansible_user_id }}"
       mode: u=rw,g=r,o=r
+    with_items: "{{ bash_includes }}"
 
   - name: Copy shell related files to home directory
     copy:

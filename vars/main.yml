@@ -1,6 +1,10 @@
 files_to_copy:
   - .bash_profile
 
+bash_includes:
+  - .bash_includes/aliases
+  - .bash_includes/helpers
+
 docker:
   bash_completion:
     url: https://raw.githubusercontent.com/docker/cli/master/contrib/completion/bash/docker

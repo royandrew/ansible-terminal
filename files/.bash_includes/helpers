@@ -1,0 +1,13 @@
+function merge_files() {
+    filename_search_key=$1
+    final_filename=$2
+
+    if [ -z "$filename_search_key" ] || [ -z "$final_filename" ]; then
+        echo "Usage: merge_files <filename_search_key> <final_filename>"
+        return 1
+    fi
+    
+    for f in ${filename_search_key}; do
+        cat $f >> $final_filename && rm $f
+    done
+}
