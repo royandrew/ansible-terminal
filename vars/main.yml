@@ -1,5 +1,6 @@
 files_to_copy:
   - .bash_profile
+  - .config/nvim/init.vim
 
 bash_includes:
   - .bash_includes/aliases
