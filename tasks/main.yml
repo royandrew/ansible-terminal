@@ -33,6 +33,14 @@
       mode: u=rw,g=r,o=r
     with_items: "{{ bash_includes }}"
 
+  - name: Ensure parent directories for files to copy exist
+    file:
+      path: "{{ home_dir }}/{{ item | dirname }}"
+      state: directory
+      owner: "{{ ansible_user_id }}"
+      mode: 0755
+    with_items: "{{ files_to_copy }}"
+
   - name: Copy shell related files to home directory
     copy:
       src: "{{ item }}"
