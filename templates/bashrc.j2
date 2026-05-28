@@ -1,11 +1,11 @@
 source ~/.bash/git-prompt.sh
 PS1='\u@\h:\W$(__git_ps1 " (%s)")\$ '
 
-{% if ansible_distribution == "Ubuntu" or ansible_distribution == "openSUSE Leap" %}
+{% if ansible_facts['distribution'] == "Ubuntu" or ansible_facts['distribution'] == "openSUSE Leap" %}
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {% endif %}
 
-{% if ansible_distribution != "Darwin" %}
+{% if ansible_facts['distribution'] != "Darwin" %}
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))) 
 {% endif %}
 
@@ -14,7 +14,7 @@ export RUSTPATH=$HOME/.cargo/bin
 export PIPXPATH=$HOME/.local/bin
 export PATH=$PATH:$GOPATH/bin:$RUSTPATH:$PIPXPATH
 
-{% if ansible_os_family == "Darwin" %}
+{% if ansible_facts['os_family'] == "Darwin" %}
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 {% endif %}
@@ -75,7 +75,7 @@ fi
 eval "$(starship init bash)"
 {% endif %}
 
-{% if 'WSL2' in ansible_kernel %}
+{% if 'WSL2' in ansible_facts['kernel'] %}
 # wget https://github.com/BlackReloaded/wsl2-ssh-pageant/releases/latest/download/wsl2-ssh-pageant.exe -O ~/.ssh/wsl2-ssh-pageant.exe
 # chmod +x ~/.ssh/wsl2-ssh-pageant.exe
 export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"

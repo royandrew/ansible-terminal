@@ -4,14 +4,14 @@
     state: latest
     update_cache: yes
   become: yes
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_facts['distribution'] == "Ubuntu"
 
 - name: Install powerline on OpenSuSE
   zypper: 
     name: powerline
     state: latest
   become: yes
-  when: ansible_distribution == "openSUSE Leap"
+  when: ansible_facts['distribution'] == "openSUSE Leap"
 
 - name: Install powerline
   pip: 
@@ -19,7 +19,7 @@
     name: "{{ item }}"
     state: latest
   with_items: "{{ packages.pip }}"
-  when: ansible_os_family == "Darwin"
+  when: ansible_facts['os_family'] == "Darwin"
 
 - name: Find python package location
   shell: echo $(pip3 show powerline-status |grep Location|cut -d ' ' -f 2)
@@ -39,19 +39,19 @@
   file:
     path: "{{ home_dir }}/{{ powerline.config.path | dirname }}"
     state: directory
-    owner: "{{ ansible_user_id }}"
+    owner: "{{ ansible_facts['user_id'] }}"
     recurse: yes
 
 - name: Copy powerline config
   copy:
     src: powerline-config.json
     dest: "{{ home_dir }}/{{ powerline.config.path }}"
-    owner: "{{ ansible_user_id }}"
+    owner: "{{ ansible_facts['user_id'] }}"
     mode: u=rw,g=r,o=r
 
 - name: Copy powerline themes
   copy:
     src: themes
     dest: "{{ home_dir }}/{{ powerline.config.path | dirname }}"
-    owner: "{{ ansible_user_id }}"
+    owner: "{{ ansible_facts['user_id'] }}"
     mode: u=rw,g=r,o=r

@@ -1,7 +1,7 @@
 ---  
   - name: Load Mac OSX specific variables
     include_vars: macos.yml
-    when: ansible_os_family == "Darwin"
+    when: ansible_facts['os_family'] == "Darwin"
   
   - include_tasks: docker_bash_completion.yml
 
@@ -15,21 +15,21 @@
     copy:
       src: .bash
       dest: "{{ home_dir }}/"
-      owner: "{{ ansible_user_id }}"
+      owner: "{{ ansible_facts['user_id'] }}"
       mode: u=rw,g=r,o=r
 
   - name: Create includes directory
     file:
       path: "{{ home_dir }}/.bash_includes"
       state: directory
-      owner: "{{ ansible_user_id }}"
+      owner: "{{ ansible_facts['user_id'] }}"
       mode: 0755
 
   - name: Copy bash include files
     copy:
       src: "{{ item }}"
       dest: "{{ home_dir }}/{{ item }}"
-      owner: "{{ ansible_user_id }}"
+      owner: "{{ ansible_facts['user_id'] }}"
       mode: u=rw,g=r,o=r
     with_items: "{{ bash_includes }}"
 
@@ -37,7 +37,7 @@
     file:
       path: "{{ home_dir }}/{{ item | dirname }}"
       state: directory
-      owner: "{{ ansible_user_id }}"
+      owner: "{{ ansible_facts['user_id'] }}"
       mode: 0755
     with_items: "{{ files_to_copy }}"
 
@@ -45,7 +45,7 @@
     copy:
       src: "{{ item }}"
       dest: "{{ home_dir }}/{{ item }}"
-      owner: "{{ ansible_user_id }}"
+      owner: "{{ ansible_facts['user_id'] }}"
       mode: u=rw,g=r,o=r
     with_items: "{{ files_to_copy }}"
 
@@ -53,12 +53,12 @@
     template: 
       src: bashrc.j2
       dest: "{{ home_dir }}/.bashrc"
-      owner: "{{ ansible_user_id }}"
+      owner: "{{ ansible_facts['user_id'] }}"
       mode: u=rw,g=r,o=r
   
   - name: Create gpg agent settings
     template: 
       src: gpg-agent.conf.j2
       dest: "{{ home_dir }}/.gnupg/gpg-agent.conf"
-      owner: "{{ ansible_user_id }}"
+      owner: "{{ ansible_facts['user_id'] }}"
       mode: u=rw,g=r,o=r
